@@ -34,7 +34,7 @@ def sendMail(request):
             "Notificatio de service!",
             "un nouveau projet vinet d'arriver!",
             "#DotPy notifyer",
-            ['wilfriedgoeh@gmail.com','augustev005@gmail.com']
+            ['wilfriedgoeh@gmail.com','augustev005@gmail.com','novenosexta77@gmail.com']
         )
         print('envoyé!')
 
