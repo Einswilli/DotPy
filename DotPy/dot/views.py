@@ -12,10 +12,10 @@ def home(request):
 
 def sendMail(request):
     if request.method=='POST':
-        print(request.POST['name'])
-        print(request.POST['email'])
-        print(request.POST['subject'])
-        print(request.POST['message'])
+        # print(request.POST['name'])
+        # print(request.POST['email'])
+        # print(request.POST['subject'])
+        # print(request.POST['message'])
 
         content=f"""
         Nom     : {request.POST['name']}
