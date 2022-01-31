@@ -36,7 +36,7 @@ def sendMail(request):
             "#DotPy notifyer",
             ['wilfriedgoeh@gmail.com','augustev005@gmail.com','novenosexta77@gmail.com']
         )
-        print('envoyé!')
+        #print('envoyé!')
 
         return HttpResponse(status=204)
 
