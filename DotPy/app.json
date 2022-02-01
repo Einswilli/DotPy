@@ -1,0 +1,22 @@
+{
+    "name": "alldotpy",
+    "description": "Le site de ma boite de dev",
+    "image": "heroku/python",
+    "repository": "https://github.com/Einswilli/DotPy",
+    "keywords": ["python", "django"],
+    "addons": ["heroku-postgresql"],
+    "env": {
+        "SECRET_KEY": {
+            "description": "gxy4)c^z2jv=zrzm-qw6!hxw@o2unxf9n)7#4388=keq1b-z8o",
+            "generator": "secret"
+        }
+    },
+    "environments": {
+        "test": {
+            "scripts": {
+                "test-setup": "python manage.py collectstatic --noinput",
+                "test": "python manage.py runserver"
+            }
+        }
+    }
+}
