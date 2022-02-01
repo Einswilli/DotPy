@@ -9,6 +9,23 @@ from django.core.mail import send_mail
 def home(request):
     return render(request,'index.html')
 
+def connexion(request):
+    return render(request,'login.html')
+
+def dashboard(request):
+    return render(request,'dashboard.html')
+
+def table(request):
+    return render(request,'tables.html')
+
+def icons(request):
+    return render(request,'icons.html')
+
+def passreset(request):
+    return render(request,'reset-password.html')
+
+def register(request):
+    return render(request,'register.html')
 
 def sendMail(request):
     if request.method=='POST':
