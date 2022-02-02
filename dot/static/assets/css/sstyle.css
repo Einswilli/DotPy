@@ -428,14 +428,14 @@ h6 {
 
 #hero {
     width: 100%;
-    background: url("../img/hero-bg.jpg");
+    background: url("../img/innov.png");
     position: relative;
     padding: 120px 0 0 0;
 }
 
 #hero:before {
     content: "";
-    background: linear-gradient(rgba(107, 65, 185, 0.91)50%, rgba(7, 97, 199, 0.411)59%);
+    background: rgba(89, 2, 161, 0.91);
     position: absolute;
     bottom: 0;
     top: 0;
