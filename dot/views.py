@@ -13,6 +13,9 @@ def home(request):
 def connexion(request):
     return render(request,'login.html')
 
+def dconnexion(request):
+    return render(request,'dlogin.html')
+
 def login(request):
     un=request.POST.get('username')
     up=request.POST.get('pass')
@@ -24,7 +27,7 @@ def login(request):
             au=Designer.objects.get(DesignerEmail=un,DesignerPass__exact=up)
             if au is not None:
                 msg=None
-                return render(request,'ddashboard.html',{'msg':msg})
+                return render(request,'store.html',{'msg':msg})
             else:
                 msg="utilisateur ou mot de passe incorrect !"
                 return render(request,'login.html',{'msg':msg})
@@ -58,33 +61,39 @@ def register(request):
 def store(request):
     return render(request,'store.html')
 
-def signup(request):
-    if request.POST.get('design'):
+def dsign(request):
+    return render(request,'dregister.html')
+
+def dregister(request):
+    try:
         d=Designer.objects.create(
-            DesignerFName=request.POST.get('fname'),
-            DesignerLName=request.POST.get('lname'),
-            DesignerEmail=request.POST.get('email'),
-            DesignerNumber=request.POST.get('number'),
-            DesignerJob=request.POST.get('jtitle'),
-            DesignerPass=request.POST.get('pass'),
-            UDesignerPhoto=request.FILES.get('Photo')
-        )
+                DesignerFName=request.POST.get('fname'),
+                DesignerLName=request.POST.get('lname'),
+                DesignerEmail=request.POST.get('email'),
+                DesignerNumber=request.POST.get('number'),
+                DesignerJob=request.POST.get('jtitle'),
+                DesignerPass=request.POST.get('pass'),
+                UDesignerPhoto=request.FILES.get('Photo')
+            )
         if d:
             return render(request,'dashboard.html')
-        return render(request,'register.html',{'msg':"Formulaire invalide"})
-    else:
-        u=User.objects.create(
-            UserFName=request.POST.get('fname'),
-            UserLName=request.POST.get('lname'),
-            UserEmail=request.POST.get('email'),
-            UserNumber=request.POST.get('number'),
-            UserJob=request.POST.get('jtitle'),
-            UserPass=request.POST.get('pass'),
-            UserPhoto=request.FILES.get('Photo')
-        )
-        if u:
-            return render(request,'dashboard.html')
-        return render(request,'register.html',{'msg':"Formulaire invalide"})
+        return render(request,'dregister.html',{'msg':"Formulaire invalide"})
+    except:
+        return render(request,'dregister.html',{'msg':"Formulaire invalide"})
+def signup(request):
+    
+    u=User.objects.create(
+        UserFName=request.POST.get('fname'),
+        UserLName=request.POST.get('lname'),
+        UserEmail=request.POST.get('email'),
+        UserNumber=request.POST.get('number'),
+        UserJob=request.POST.get('jtitle'),
+        UserPass=request.POST.get('pass'),
+        UserPhoto=request.FILES.get('Photo')
+    )
+    if u:
+        return render(request,'dashboard.html')
+    return render(request,'register.html',{'msg':"Formulaire invalide"})
 
 def sendMail(request):
     if request.method=='POST':

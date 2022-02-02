@@ -1,0 +1,186 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registration</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="{%static 'assets/vendors/typicons/typicons.css'%}">
+    <link rel="stylesheet" href="{%static 'assets/css/bundle.base.css'%}">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{%static 'assets/css/vertical-layout-light/style.css'%}">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="{%static 'assets/img/py.png'%}" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <div class="brand-logo">
+                                <img src="{%static 'assets/img/py.png'%}" alt="logo" height="80px" width="80px">
+                            </div>
+                            <h4>New here?</h4>
+                            {% if msg%}
+                            <div class="error">{{msg}}
+                            </div>
+                            {% endif %}
+
+                            <form action="{% url 'signup' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleInputName" class="sr-only">FirsName</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputName" name="fname" class="form-control input-shadow" placeholder="Nom">
+                                        <div class="form-control-position">
+                                            <i class="icon-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName" class="sr-only">LastName</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputName" name="lname" class="form-control input-shadow" placeholder="Prenom">
+                                        <div class="form-control-position">
+                                            <i class="icon-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmailId" class="sr-only">Email</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputEmailId" name="email" class="form-control input-shadow" placeholder="Email">
+                                        <div class="form-control-position">
+                                            <i class="icon-envelope-open"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName" class="sr-only">Phone Number</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputName" name="number" class="form-control input-shadow" placeholder="Numero Téléphone">
+                                        <div class="form-control-position">
+                                            <i class="icon-phone"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName" class="sr-only">Job Title</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputName" name="jtitle" class="form-control input-shadow" placeholder="Titre de Post">
+                                        <div class="form-control-position">
+                                            <i class="icon-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword" class="sr-only">Password</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputPassword" name="pass" class="form-control input-shadow" placeholder="Mot de passe">
+                                        <div class="form-control-position">
+                                            <i class="icon-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName" class="sr-only">Photo</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="file" class="form-control" name="Photop" id="">
+                                        <div class="form-control-position">
+                                            <i class="icon-doc"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="icheck-material-white">
+                                        <input type="checkbox" id="user-checkbox" name="design" checked="" />
+                                        <label for="user-checkbox">Je suis designer</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="icheck-material-white">
+                                        <input type="checkbox" id="user-checkbox" checked="" />
+                                        <label for="user-checkbox">J'accepte les Termes & Conditions</label>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary btn-block waves-effect waves-light">S'inscrire</button>
+                                <!-- <div class="text-center mt-3">S'inscrire avec</div> -->
+
+                                <div class="form-row mt-4">
+                                    <div class="form-group mb-0 col-12">
+                                        <a href="{% url 'store' %}"><button type="button" class="btn btn-outline-primary btn-block"><i class="fa fa-facebook-square"></i>Page d'Acceuil</button></a>
+                                    </div>
+                                    <!-- <div class="form-group mb-0 col-6 text-right">
+                                        <button type="button" class="btn btn-light btn-block"><i class="fa fa-twitter-square"></i> Twitter</button>
+                                    </div> -->
+                                </div>
+
+                            </form>
+
+                            <!-- <form class="pt-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control form-control-lg" id="exampleFormControlSelect2">
+                    <option>Country</option>
+                    <option>United States of America</option>
+                    <option>United Kingdom</option>
+                    <option>India</option>
+                    <option>Germany</option>
+                    <option>Argentina</option>
+                  </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <label class="form-check-label text-muted">
+                      <input type="checkbox" class="form-check-input">
+                      I agree to all Terms & Conditions
+                    </label>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="{% url 'dregister' %}">SIGN UP</a>
+                                </div>
+                                <div class="text-center mt-4 font-weight-light">
+                                    Already have an account? <a href="{% url 'dconnexion' %}" class="text-primary">Login</a>
+                                </div>
+                            </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- base:js -->
+    <script src="{%static 'assets/js/vendor.bundle.base.js'%}"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="{%static 'assets/js/off-canvas.js'%}"></script>
+    <script src="{%static 'assets/js/hoverable-collapse.js'}"></script>
+    <script src="{%static 'assets/js/template.js'%}"></script>
+    <script src="{%static 'assets/js/settings.js'%}"></script>
+    <script src="{%static 'assets/js/todolist.js'%}"></script>
+    <!-- endinject -->
+</body>
+
+</html>
