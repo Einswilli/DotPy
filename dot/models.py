@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -25,7 +26,7 @@ class Designer(models.Model):
     DesignerNumber=models.IntegerField()
     DesignerJob=models.CharField(max_length=150)
     DesignerPass=models.CharField(max_length=25)
-    UDesignerPhoto=models.ImageField()
+    DesignerPhoto=models.ImageField(default='static/assets/img/py.png')
     JoinedAt=models.DateField(auto_now_add=True)
 
     def __str__(self):
