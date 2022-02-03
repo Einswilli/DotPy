@@ -17,19 +17,17 @@ def dconnexion(request):
     return render(request,'dlogin.html')
 
 def dlogin(request):
+    
     un=request.POST.get('username')
     up=request.POST.get('pass')
     #c=request.POST.get('design')
     msg=''
     #try:
     try:
-        
         au=Designer.objects.get(DesignerEmail=un,DesignerPass__exact=up)
-    except:au=None
-    if au is not None:
         msg=None
         return render(request,'ddash.html',{'msg':msg,'user':au})
-    else:
+    except:
         msg="utilisateur ou mot de passe incorrect !"
         return render(request,'dlogin.html',{'msg':msg})
     # except:
@@ -71,6 +69,9 @@ def register(request):
     return render(request,'register.html')
 
 def store(request):
+    # for i in range(Designer.objects.all().count()):
+    #     Designer.objects.filter(DesignerID=i).delete()
+    #     print('deleted!')
     return render(request,'store.html')
 
 def dsign(request):
@@ -78,20 +79,30 @@ def dsign(request):
 
 def dregister(request):
     try:
-        d=Designer.objects.create(
-                DesignerFName=request.POST.get('fname'),
-                DesignerLName=request.POST.get('lname'),
-                DesignerEmail=request.POST.get('email'),
-                DesignerNumber=request.POST.get('number'),
-                DesignerJob=request.POST.get('jtitle'),
-                DesignerPass=request.POST.get('pass'),
-                UDesignerPhoto=request.FILES.get('Photo')
-            )
-        if d:
-            return render(request,'store.html')
-        return render(request,'dregister.html',{'msg':"Formulaire invalide"})
+        try:
+            ds=Designer.objects.get(DesignerFName=request.POST.get('fname'),DesignerLName=request.POST.get('lname'),DesignerEmail=request.POST.get('email'),DesignerNumber=request.POST.get('number'),)
+        
+            return render(request,'dregister.html',{'msg':"Un compte existe déjà avec les même information"})
+        except:
+            #return render(request,'dregister.html',{'msg':"Un compte existe déjà avec les même information"})
+
+            d=Designer.objects.create(
+                    DesignerFName=request.POST.get('fname'),
+                    DesignerLName=request.POST.get('lname'),
+                    DesignerEmail=request.POST.get('email'),
+                    DesignerNumber=request.POST.get('number'),
+                    DesignerJob=request.POST.get('jtitle'),
+                    DesignerPass=request.POST.get('pass'),
+                    DesignerPhoto=request.FILES.get('Photo')
+                )
+            if d:
+                print("enregistré!")
+                return render(request,'ddash.html',{'user':Designer.objects.get(DesignerFName=request.POST.get('fname'),DesignerLName=request.POST.get('lname'),DesignerPass=request.POST.get('pass'),)})
+            return render(request,'dregister.html',{'msg':"Formulaire invalide"})
     except:
         return render(request,'dregister.html',{'msg':"Formulaire invalide"})
+
+        
 def signup(request):
     
     u=User.objects.create(
