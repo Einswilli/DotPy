@@ -591,11 +591,6 @@
                     </div>
 
                 </div>
-                <!-- <script>
-                    $(document).ready(function() {
-                        $('#dataTable').DataTable();
-                    });
-                </script> -->
 
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
@@ -660,10 +655,16 @@
         <!-- Page level plugins -->
         <!-- <script src="{%static 'assets/js/jquery.dataTables.min.js'%}"></script>
         <script src="{%static 'assets/js/dataTables.bootstrap4.min.js'%}"></script> -->
-        <script src="{%static 'assets/js/datatables.min.js'%}"></script>
+        <script type="text/Javascript" src="{%static 'assets/js/datatables.min.js'%}"></script>
 
         <!-- Page level custom scripts -->
-        <script src="{%static 'js/datatables-demo.js'%}"></script>
+        <!-- <script src="{%static 'js/datatables-demo.js'%}"></script> -->
+
+        <script>
+            $(document).ready(function() {
+                $('#dataTable').DataTable();
+            });
+        </script>
 
 </body>
 
