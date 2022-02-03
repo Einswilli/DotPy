@@ -13,6 +13,7 @@ urlpatterns=[
     path("dregister",views.dregister,name="dregister"),
     path("dsign",views.dsign,name="dsign"),
     path("login",views.login,name="login"),
+    path("dlogin",views.dlogin,name="dlogin"),
     path("signup",views.signup,name="signup"),
     path("store",views.store,name="store"),
     ]

@@ -139,7 +139,7 @@ h6 {
     transition: all 0.5s;
     z-index: 997;
     transition: all 0.5s;
-    background: rgba(1, 4, 136, 0.9);
+    background: rgba(94, 26, 172, 0.9);
 }
 
 #header.header-transparent {
@@ -147,7 +147,7 @@ h6 {
 }
 
 #header.header-scrolled {
-    background: rgba(1, 4, 136, 0.9);
+    background: rgba(94, 26, 172, 0.9);
     height: 60px;
 }
 
@@ -270,7 +270,7 @@ h6 {
     font-size: 14px;
     font-weight: 500;
     text-transform: none;
-    color: #01036f;
+    color: rgba(94, 26, 172, 0.9);
 }
 
 .navbar .dropdown ul a i {
@@ -515,7 +515,8 @@ h6 {
         text-align: center;
     }
     #hero .hero-img img {
-        max-width: 50%;
+        max-width: 90%;
+        max-height: 90%;
     }
     #hero h1 {
         font-size: 28px;

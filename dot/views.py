@@ -16,29 +16,41 @@ def connexion(request):
 def dconnexion(request):
     return render(request,'dlogin.html')
 
+def dlogin(request):
+    un=request.POST.get('username')
+    up=request.POST.get('pass')
+    #c=request.POST.get('design')
+    msg=''
+    #try:
+    try:
+        
+        au=Designer.objects.get(DesignerEmail=un,DesignerPass__exact=up)
+    except:au=None
+    if au is not None:
+        msg=None
+        return render(request,'ddash.html',{'msg':msg,'user':au})
+    else:
+        msg="utilisateur ou mot de passe incorrect !"
+        return render(request,'dlogin.html',{'msg':msg})
+    # except:
+    #     msg="utilisateur ou mot de passe incorrect !"
+    #     return render(request,'dlogin.html',{'msg':msg})
+
 def login(request):
     un=request.POST.get('username')
     up=request.POST.get('pass')
-    c=request.POST.get('design')
+    #c=request.POST.get('design')
     msg=''
 
     try:
-        if c:
-            au=Designer.objects.get(DesignerEmail=un,DesignerPass__exact=up)
-            if au is not None:
-                msg=None
-                return render(request,'store.html',{'msg':msg})
-            else:
-                msg="utilisateur ou mot de passe incorrect !"
-                return render(request,'login.html',{'msg':msg})
+        
+        u=User.objects.get(UserEmail=un,UserPass__exact=up)
+        if u is not None:
+            msg=None
+            return render(request,'dashboard.html',{'msg':msg})
         else:
-            u=User.objects.get(UserEmail=un,UserPass__exact=up)
-            if u is not None:
-                msg=None
-                return render(request,'dashboard.html',{'msg':msg})
-            else:
-                msg="utilisateur ou mot de passe incorrect !"
-                return render(request,'login.html',{'msg':msg})
+            msg="utilisateur ou mot de passe incorrect !"
+            return render(request,'login.html',{'msg':msg})
     except:
         msg="utilisateur ou mot de passe incorrect !"
         return render(request,'login.html',{'msg':msg})
@@ -76,7 +88,7 @@ def dregister(request):
                 UDesignerPhoto=request.FILES.get('Photo')
             )
         if d:
-            return render(request,'dashboard.html')
+            return render(request,'store.html')
         return render(request,'dregister.html',{'msg':"Formulaire invalide"})
     except:
         return render(request,'dregister.html',{'msg':"Formulaire invalide"})

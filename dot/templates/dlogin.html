@@ -27,17 +27,20 @@
                             <div class="brand-logo">
                                 <img src="{%static 'assets/img/py.png'%}" alt="logo" height="80px" width="70px">
                             </div>
-                            <h4>S'inscrire</h4>
+                            <h4>Connexion</h4>
+                            {% if msg %}
+                            <div class="error">{{msg}}</div>
+                            {% endif %}
                             <!-- <h6 class="font-weight-light">Sign in to continue.</h6> -->
-                            <form class="pt-3">
+                            <form class="pt-3" action="{% url 'dlogin' %}" method="POST">{% csrf_token %}
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="username">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="pass">
                                 </div>
                                 <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="{% url 'dregister' %}">Se Connecter</a>
+                                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Se Connecter</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">

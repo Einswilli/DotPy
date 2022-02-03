@@ -74,6 +74,7 @@ class Template(models.Model):
     TempDesc=models.CharField(max_length=500)
     Tempfile=models.FileField()
     TempImg=models.ImageField()
+    TempPrice=models.FloatField()
     tempAthor=models.ForeignKey("Suscriber",on_delete=models.CASCADE)
     AddedAt=models.DateField(auto_now_add=True)
 

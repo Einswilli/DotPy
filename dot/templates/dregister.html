@@ -28,13 +28,13 @@
                             <div class="brand-logo">
                                 <img src="{%static 'assets/img/py.png'%}" alt="logo" height="80px" width="80px">
                             </div>
-                            <h4>New here?</h4>
+                            <h4>S'Inscrire</h4>
                             {% if msg%}
                             <div class="error">{{msg}}
                             </div>
                             {% endif %}
 
-                            <form action="{% url 'signup' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            <form action="{% url 'dregister' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
                                 <div class="form-group">
                                     <label for="exampleInputName" class="sr-only">FirsName</label>
                                     <div class="position-relative has-icon-right">
