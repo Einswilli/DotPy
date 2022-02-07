@@ -26,7 +26,7 @@ class Designer(models.Model):
     DesignerNumber=models.IntegerField()
     DesignerJob=models.CharField(max_length=150)
     DesignerPass=models.CharField(max_length=25)
-    DesignerPhoto=models.ImageField(default='static/assets/img/py.png')
+    DesignerPhoto=models.ImageField(default='py.png')
     JoinedAt=models.DateField(auto_now_add=True)
 
     def __str__(self):
@@ -73,10 +73,11 @@ class Template(models.Model):
     TempID=models.AutoField(primary_key=True)
     TempName=models.CharField(max_length=70)
     TempDesc=models.CharField(max_length=500)
+    TempType=models.CharField(max_length=20,default='Kivymd')
     Tempfile=models.FileField()
     TempImg=models.ImageField()
     TempPrice=models.FloatField()
-    tempAthor=models.ForeignKey("Suscriber",on_delete=models.CASCADE)
+    tempAthor=models.ForeignKey("Designer",on_delete=models.CASCADE)
     AddedAt=models.DateField(auto_now_add=True)
 
     def __str__(self) :

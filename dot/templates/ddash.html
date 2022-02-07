@@ -34,7 +34,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav badge-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#" style="background-color:#0B020FA1">
@@ -68,13 +68,13 @@
                     <i class="zmdi zmdi-palette"></i>
                     <span>Templates</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="#">Nouveau</a>
-                        <a class="collapse-item" href="#">Liste</a>
+                        <a class="collapse-item" href="#liste">Liste</a>
                     </div>
-                </div>
+                </div> -->
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -83,7 +83,7 @@
                     <i class="zmdi zmdi-account"></i>
                     <span>Mon Compte</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <!-- <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item" href="utilities-color.html">Colors</a>
@@ -91,7 +91,7 @@
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
-                </div>
+                </div> -->
             </li>
 
 
@@ -322,7 +322,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$0,0</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -340,7 +340,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$0,0</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -398,14 +398,89 @@
 
                     <!-- Content Row -->
 
-                    <div class="row" hidden>
+                    <!-- <div class="card">
+                        <div class="card-header text-start" tyle="border-bottom:1px solid #1A043F">
+                            <h5 class="">Nouveau Template</h5>
+                        </div>
+                        <div class="card-body" style="display:inline-block">
+                            <form action="{% url 'tempsave' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                                <div class="form-group">
+                                    <p>Template Name</p>
+                                    <label for="exampleInputPassword" class="sr-only">Name</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputPassword" name="name" class="form-control input-shadow" placeholder="Nom du template">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p>Description </p>
+                                    <label for="exampleInputPassword" class="sr-only">Desc</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputPassword" name="desc" class="form-control input-shadow" placeholder="description">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Template Type</p>
+                                    <select name="type" id="">
+                                        <option value="Kivymd">Kivymd</option>
+                                        <option value="Flutter">Flutter</option>
+                                        <option value="Kothlin">Kothlin</option>
+                                        <option value="Autres">Autres</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" hidden>
+                                    <p>Template Type</p>
+                                    <select name="auth" id="">
+                                        <option value="{{user.DesignerID}}">{{user.DesignerID}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <p>Your Project.zip</p>
+                                    <div class="position-relative " style="display: flex;">
+                                        <label for="exampleInputName" class="sr-only">Project.zip</label>
+                                        <input type="file" class="form-control" name="project" id="" placeholder="Your Project.zip">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Preview Image</p>
+                                    <div class="position-relative " style="display: flex;">
+                                        <label for="exampleInputName" class="sr-only">Project.zip</label>
+                                        <input type="file" class="form-control" name="Photo" id="">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Template Price ($)</p>
+                                    <label for="exampleInputPassword" class="sr-only">Price</label>
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" id="exampleInputPassword" name="price" class="form-control input-shadow" placeholder="prix (en$)">
+
+                                    </div>
+                                </div>
+                                <div class="form-row mt-4">
+                                    <div class="form-group mb-0 col-6">
+                                        <a href="#"><button type="button" class="btn btn-danger btn-block">Annuler</button></a>
+                                    </div>
+                                    <div class="form-group mb-0 col-6 text-right">
+                                        <button class="btn btn-primary btn-block"></i> Enregistrer</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br> -->
+
+                    <div class="row">
 
                         <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">New Template</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -421,8 +496,81 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area">
+                                    <!-- <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
+                                    </div> -->
+                                    <div class="card">
+                                        <div class="card-header text-start" tyle="border-bottom:1px solid #1A043F">
+                                            <h5 class="">Nouveau Template</h5>
+                                        </div>
+                                        <div class="card-body" style="display:inline-block">
+                                            <form action="{% url 'tempsave' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                                                <div class="form-group">
+                                                    <p>Template Name</p>
+                                                    <label for="exampleInputPassword" class="sr-only">Name</label>
+                                                    <div class="position-relative has-icon-right">
+                                                        <input type="text" id="exampleInputPassword" name="name" class="form-control input-shadow" placeholder="Nom du template">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <p>Description </p>
+                                                    <label for="exampleInputPassword" class="sr-only">Desc</label>
+                                                    <div class="position-relative has-icon-right">
+                                                        <input type="text" id="exampleInputPassword" name="desc" class="form-control input-shadow" placeholder="description">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Template Type</p>
+                                                    <select name="type" id="">
+                                                        <option value="Kivymd">Kivymd</option>
+                                                        <option value="Flutter">Flutter</option>
+                                                        <option value="Kothlin">Kothlin</option>
+                                                        <option value="Autres">Autres</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group" hidden>
+                                                    <p>Template Type</p>
+                                                    <select name="auth" id="">
+                                                        <option value="{{user.DesignerID}}">{{user.DesignerID}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Your Project.zip</p>
+                                                    <div class="position-relative " style="display: flex;">
+                                                        <label for="exampleInputName" class="sr-only">Project.zip</label>
+                                                        <input type="file" class="form-control" name="project" id="" placeholder="Your Project.zip">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Preview Image</p>
+                                                    <div class="position-relative " style="display: flex;">
+                                                        <label for="exampleInputName" class="sr-only">Project.zip</label>
+                                                        <input type="file" class="form-control" name="Photo" id="">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <p>Template Price ($)</p>
+                                                    <label for="exampleInputPassword" class="sr-only">Price</label>
+                                                    <div class="position-relative has-icon-right">
+                                                        <input type="text" id="exampleInputPassword" name="price" class="form-control input-shadow" placeholder="prix (en$)">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-row mt-4">
+                                                    <div class="form-group mb-0 col-6">
+                                                        <a href="#"><button type="button" class="btn btn-danger btn-block">Annuler</button></a>
+                                                    </div>
+                                                    <div class="form-group mb-0 col-6 text-right">
+                                                        <button class="btn btn-primary btn-block"></i> Enregistrer</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -468,7 +616,7 @@
                         </div>
                     </div>
 
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4" id="liste">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Liste</h6><br><br>
                             <!-- <div class="form-group">
@@ -485,104 +633,35 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Description</th>
+                                            <th>Type</th>
+                                            <th>Price</th>
+                                            <th>AddedAt</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Description</th>
+                                            <th>Type</th>
+                                            <th>Price</th>
+                                            <th>AddedAt</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        {% for template in tmp %}
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>{{template.TempName}}</td>
+                                            <td>{{template.TempDesc}} </td>
+                                            <td>{{template.TempType}}</td>
+                                            <td>${{template.TempPrice}}</td>
+                                            <td>{{template.AddedAt}}</td>
+                                            <td>{{template.TempName}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td>$327,900</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Colleen Hurst</td>
-                                            <td>Javascript Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>39</td>
-                                            <td>2009/09/15</td>
-                                            <td>$205,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sonya Frost</td>
-                                            <td>Software Engineer</td>
-                                            <td>Edinburgh</td>
-                                            <td>23</td>
-                                            <td>2008/12/13</td>
-                                            <td>$103,600</td>
-                                        </tr>
+                                        {% endfor %}
+
 
                                     </tbody>
                                 </table>

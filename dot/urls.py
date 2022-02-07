@@ -16,4 +16,5 @@ urlpatterns=[
     path("dlogin",views.dlogin,name="dlogin"),
     path("signup",views.signup,name="signup"),
     path("store",views.store,name="store"),
+    path("tempsave",views.tempsave,name="tempsave"),
     ]

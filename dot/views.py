@@ -25,8 +25,9 @@ def dlogin(request):
     #try:
     try:
         au=Designer.objects.get(DesignerEmail=un,DesignerPass__exact=up)
+        tm=Template.objects.filter(tempAthor=int(au.DesignerID)).order_by('AddedAt')
         msg=None
-        return render(request,'ddash.html',{'msg':msg,'user':au})
+        return render(request,'ddash.html',{'msg':msg,'user':au,'tmp':tm})
     except:
         msg="utilisateur ou mot de passe incorrect !"
         return render(request,'dlogin.html',{'msg':msg})
@@ -72,7 +73,8 @@ def store(request):
     # for i in range(Designer.objects.all().count()):
     #     Designer.objects.filter(DesignerID=i).delete()
     #     print('deleted!')
-    return render(request,'store.html')
+    ts=Template.objects.all()
+    return render(request,'store.html',{'tmp':ts})
 
 def dsign(request):
     return render(request,'dregister.html')
@@ -148,3 +150,20 @@ def sendMail(request):
 
         return HttpResponse(status=204)
 
+def tempsave(request):
+    #print(request.POST['name'])
+    t=Template.objects.create(
+        TempName=request.POST.get('name'),
+        TempDesc=request.POST.get('desc'),
+        TempType=request.POST.get('type'),
+        Tempfile=request.FILES.get('project'),
+        TempImg=request.POST.get('Photo'),
+        TempPrice=request.POST.get('price'),
+        tempAthor=Designer.objects.get(DesignerID=int(request.POST.get('auth')))
+    )
+    tm=Template.objects.filter(tempAthor=int(request.POST.get('auth'))).order_by('AddedAt')
+    if t:
+        print('saved!')
+        return render(request,'ddash.html',{'msg':'SUCCES!','tmp':tm})
+    else:
+        render(request,'ddash.html',{'msgerr':'ERROR!'})
